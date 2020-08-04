@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RecyclerParallax.iml" filepath="$PROJECT_DIR$/RecyclerParallax.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecyclerParallax.iml" filepath="$PROJECT_DIR$/RecyclerParallax.iml" group="RecyclerParallax" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="RecyclerParallax/app" />
     </modules>
   </component>
 </project>

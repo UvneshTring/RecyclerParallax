@@ -1,11 +1,9 @@
 package com.arjunalabs.android.recyclerparallax;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
 
 /**
  * Created by bobbyadiprabowo on 6/5/15.

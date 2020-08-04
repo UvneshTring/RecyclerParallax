@@ -1,12 +1,14 @@
 package com.arjunalabs.android.recyclerparallax;
 
 import android.graphics.Matrix;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +58,19 @@ public class ParallaxAdapter extends RecyclerView.Adapter<ParallaxAdapter.Parall
 
         parallaxViewHolder.itemView.setTag(parallaxViewHolder);
 
+        if(i==3) {
+            parallaxViewHolder.parallaxAdView.setVisibility(View.VISIBLE);
+            parallaxViewHolder.parallaxAdView.loadAd(MainActivity.adRequest);
+            parallaxViewHolder.parallaxAdView.resume();
+            parallaxViewHolder.parallaxImage.setVisibility(View.GONE);
+            parallaxViewHolder.parallaxText.setVisibility(View.GONE);
+        }
+        else {
+            parallaxViewHolder.parallaxAdView.setVisibility(View.GONE);
+            parallaxViewHolder.parallaxImage.setVisibility(View.VISIBLE);
+            parallaxViewHolder.parallaxText.setVisibility(View.VISIBLE);
+        }
+
     }
 
 
@@ -82,6 +97,7 @@ public class ParallaxAdapter extends RecyclerView.Adapter<ParallaxAdapter.Parall
     public static class ParallaxViewHolder extends RecyclerView.ViewHolder {
         public ImageView parallaxImage;
         public TextView parallaxText;
+        public AdView parallaxAdView;
         private int recyclerViewHeight;
         private View itemView;
 
@@ -91,6 +107,7 @@ public class ParallaxAdapter extends RecyclerView.Adapter<ParallaxAdapter.Parall
             parallaxImage = (ImageView) itemView.findViewById(R.id.image_background);
             parallaxImage.setScaleType(ImageView.ScaleType.MATRIX);
             parallaxText = (TextView) itemView.findViewById(R.id.text_title);
+            parallaxAdView = (AdView) itemView.findViewById(R.id.ad_view);
             this.recyclerViewHeight = recyclerViewHeight;
         }
 
@@ -98,7 +115,6 @@ public class ParallaxAdapter extends RecyclerView.Adapter<ParallaxAdapter.Parall
             float translate = -itemView.getY() * ((float)parallaxImage.getMeasuredHeight() / (float)recyclerViewHeight);
             Matrix matrix = new Matrix();
             matrix.postTranslate(0, translate);
-
             parallaxImage.setImageMatrix(matrix);
         }
     }
